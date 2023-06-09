@@ -1,0 +1,119 @@
+syntax = "v1"
+
+info(
+	title: "管理后台"
+	desc: "管理后台"
+	author: "1usir"
+	Email: "lulang@zhiannet.com"
+	version: "v1.0.0"
+)
+
+//----------------- admin api -----------------
+
+import "types/auth.api"
+
+@server(
+	prefix: api/v1/admin
+	group: admin
+)
+
+service admin-api  {
+	
+	@doc "鉴权登录-管理登录"
+	@handler login
+	post /login (LoginReq) returns (LoginResp)
+	
+	@doc "首页-统计"
+	@handler statistic
+	get /statistic returns (StatisticResp)
+}
+
+//----------------- questions api -----------------
+
+import "types/questions.api"
+@server(
+	prefix: api/v1/question
+	group: question
+)
+
+service admin-api  {
+	
+	@doc "题目新增-文件导入"
+	@handler import
+	post /import (ImportReq)
+	
+	@doc "题目新增-文件模板"
+	@handler template
+	get /template
+	
+	@doc "题目新增-手动新增"
+	@handler add
+	post /add (AddReq)
+	
+	@doc "题目修改"
+	@handler edit
+	post /edit (EditReq)
+	
+	@doc "题目删除"
+	@handler delete
+	delete /delete (DeleteReq)
+	
+	@doc "题目列表"
+	@handler list
+	get /list (ListReq) returns (ListResp)
+	
+	@doc "题目解析"
+	@handler analyzing
+	get /analyzing (AnalyzingReq) returns (AnalyzingResp)
+	
+}
+
+//----------------- questions types api-----------------
+
+import "types/question_types.api"
+@server(
+	prefix: api/v1/question/types
+	group: question/types
+)
+
+service admin-api {
+	
+	@doc "题目类型新增"
+	@handler add
+	post /add (TypeAddReq)
+	
+	@doc "题目类型新增"
+	@handler edit
+	post /edit (TypeEditReq)
+	
+	@doc "题目类型下拉框"
+	@handler option
+	get /option returns (TypeOptionResp)
+	
+	@doc "题目类型删除"
+	@handler delete
+	delete /delete (TypeDeleteReq)
+}
+
+//----------------- questions types api-----------------
+
+import "types/user.api"
+@server(
+	prefix: api/v1/user
+	group: user
+)
+service admin-api {
+	
+	@doc "用户新增"
+	@handler add
+	post /add (UserAddReq)
+	
+	@doc "用户信息"
+	@handler info
+	get /info (UserInfoReq) returns (UserInfoResp)
+	
+	@doc "用户列表"
+	@handler list
+	get /list (UserListReq) returns (UserListResp)
+	
+}

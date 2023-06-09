@@ -1,0 +1,25 @@
+syntax = "v1"
+
+
+type (
+    TypeAddReq {
+        Type int64 `json:"type"` // 所属题库类型
+        Name string `json:"name"` // 题库名
+    }
+    TypeEditReq {
+        Id int64 `json:"id"`
+        Type int64 `json:"type"` // 所属题库类型
+        Name string `json:"name"` // 题库名
+    }
+    TypeOptionResp {
+        Items []Type `json:"items"`
+    }
+    Type {
+        Id int64 `json:"id"`
+        Name string `json:"name"`
+        Items []Type `json:"items"`
+    }
+    TypeDeleteReq{
+        Id int64 `json:"id"`
+    }
+)

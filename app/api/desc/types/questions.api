@@ -1,0 +1,50 @@
+syntax = "v1"
+
+type (
+    ImportReq {
+        File string `form:"file,optional"`
+    }
+    AddReq {
+        Type int64 `json:"type"` // 所属题库类型
+        Desc string `json:"desc"` // 题目描述
+        Options string `json:"options"` // 题目选项
+        Answers string `json:"answers"` // 题目答案
+        Summary string `json:"summary"` // 题目考点
+    }
+    EditReq {
+        Id int64 `json:"id"`
+        Type int64 `json:"type"` // 所属题库类型
+        Desc string `json:"desc"` // 题目描述
+        Options string `json:"options"` // 题目选项
+        Answers string `json:"answers"` // 题目答案
+        Summary string `json:"summary"` // 题目考点
+    }
+    DeleteReq{
+        Ids []int64 `json:"ids"`
+    }
+    ListReq {
+        Type int64 `json:"type"`    // 所属题库类型
+        Keyword string `json:"keyword"` // 题目关键词查询
+        Page int `json:"page"` // 页码
+        Size int `json:"size"` // 大小
+    }
+    ListResp{
+        Total int64 `json:"total"`
+        Questions []Question `json:"questions"`
+    }
+    Question{
+        Id int64 `json:"id"`
+        Desc string `json:"desc"` // 题目描述
+        Options string `json:"options"` // 题目选项
+        Answers string `json:"answers"` // 题目答案
+        Summary string `json:"summary"` // 题目考点
+        Stat string `json:"stat"`  // 正确率
+        CreateTime int64 `json:"createTime"`// 创建时间
+    }
+    AnalyzingReq {
+
+    }
+    AnalyzingResp{
+
+    }
+)

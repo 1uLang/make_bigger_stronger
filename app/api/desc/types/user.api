@@ -1,0 +1,32 @@
+syntax = "v1"
+
+type(
+
+    UserAddReq{
+        Name string `json:"name"`
+        OpenId string `json:"openId"`
+    }
+    UserInfoReq {
+        OpenId string `json:"openId"` //微信openID
+    }
+    UserInfoResp {
+        Id int64 `json:"id"`
+        Name string `json:"name"` // 用户名称 默认微信名称
+        OpenId string `json:"openId"` //微信openID
+        Count int64 `json:"count"` // 答题次数
+        State string `json:"state"` // 答题统计 正确数/总数
+    }
+    UserListReq {
+        Name string `json:"name"`
+        Page int `json:"page"` // 页码
+        Size int `json:"size"` // 大小
+    }
+    UserListResp {
+        Id int64 `json:"id"`
+        Name string `json:"name"` // 用户名称 默认微信名称
+        OpenId string `json:"openId"` //微信openID
+        Count int64 `json:"count"` // 答题次数
+        State string `json:"state"` // 答题统计 正确数/总数
+        LastAnswerTime int64 `json:"lastAnswerTime"` // 上次答题时间
+    }
+)
